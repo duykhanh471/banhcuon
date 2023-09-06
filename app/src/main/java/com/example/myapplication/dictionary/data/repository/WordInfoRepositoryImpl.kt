@@ -1,5 +1,6 @@
 package com.example.myapplication.dictionary.data.repository
 
+import android.util.Log
 import com.example.myapplication.core.util.Resources
 import com.example.myapplication.dictionary.data.local.WordInfoDao
 import com.example.myapplication.dictionary.data.remote.DictionaryAPI
@@ -21,16 +22,16 @@ class WordInfoRepositoryImpl(
 
         try {
             val remoteWordInfo = api.getWordMeaning(word)
-            dao.deleteWordInfo(remoteWordInfo.map{it.word})
-            dao.insertWordInfo(remoteWordInfo.map{it.toWordInfoEntity()})
+            dao.deleteWordInfo(remoteWordInfo.map {it.word})
+            dao.insertWordInfo(remoteWordInfo.map {it.toWordInfoEntity()})
         } catch(e : HttpException) {
             emit(Resources.Error(
-              message = "HTTP error, please try again",
+              message = "Something went wrong!??",
                 data = wordInfo
             ))
         } catch(e: IOException) {
             emit(Resources.Error(
-                message = "IOException, please try again",
+                message = "Please check your internet connection.",
                 data = wordInfo
             ))
         }

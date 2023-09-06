@@ -13,14 +13,12 @@ data class WordInfoDto(
     fun toWordInfo() : WordInfo {
         return WordInfo(
             meanings = meanings.map{it.toMeaning()},
-            phonetic = phonetic,
             word = word
         )
     }
     fun toWordInfoEntity() : WordInfoEntity {
         return WordInfoEntity(
             meanings = meanings.map{it.toMeaning()},
-            phonetic = phonetic,
             word = word,
         )
     }

@@ -30,10 +30,9 @@ object WordInfoModule {
 
     @Provides
     @Singleton
-    fun provideWordInfoRepository(dao: WordInfoDao, api: DictionaryAPI) : WordInfoRepositoryImpl {
-        return WordInfoRepositoryImpl(api, dao)
+    fun provideWordInfoRepository(db: WordInfoDatabase, api: DictionaryAPI) : WordInfoRepository {
+        return WordInfoRepositoryImpl(api, db.dao)
     }
-
     @Provides
     @Singleton
     fun provideWordInfoDatabase(app: Application) : WordInfoDatabase {

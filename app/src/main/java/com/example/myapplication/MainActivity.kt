@@ -31,6 +31,7 @@ import com.example.myapplication.ui.theme.MyApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -45,7 +46,7 @@ class MainActivity : ComponentActivity() {
                 LaunchedEffect(key1 = true) {
                     viewModel.eventFlow.collectLatest { event ->
                         when(event) {
-                            is WordInfoViewModel.UIEvent.ShowSnackbar -> {
+                            is WordInfoViewModel.UIEvent.ShowInfoBox -> {
                                 snackbarState.showSnackbar(
                                     message = event.message
                                 )
@@ -88,10 +89,10 @@ class MainActivity : ComponentActivity() {
 
                 }
 
+            }
         }
     }
-}}
-
+}
 
 
 

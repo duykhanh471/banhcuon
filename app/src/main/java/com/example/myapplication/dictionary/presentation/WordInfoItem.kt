@@ -15,22 +15,20 @@ import com.example.myapplication.dictionary.domain.model.WordInfo
 @Composable
 fun WordInfoItem(
     wordInfo: WordInfo,
-    modifier: Modifier = Modifier
 ) {
     Column(modifier = Modifier) {
         Text(
            text = wordInfo.word, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color.Black
         )
-        Text(text = wordInfo.phonetic, fontWeight = FontWeight.Light)
         Spacer(modifier = Modifier.height(10.dp))
         wordInfo.meanings.forEach { meaning ->
             Text(text = meaning.partOfSpeech, fontSize = 18.sp, fontWeight = FontWeight.Normal, color = Color.Black)
             meaning.definitions.forEachIndexed { index, definition ->
                 Text(text = "${index}. ${definition.definition}")
                 Spacer(modifier = Modifier.height(5.dp))
-                Text(text = "${index}. ${definition.antonyms}")
+                Text(text = "Antonym : ${definition.antonyms}")
                 Spacer(modifier = Modifier.height(5.dp))
-                Text(text = "${index}. ${definition.synonyms}")
+                Text(text = "Synonym : ${definition.synonyms}")
             }
         }
     }
